@@ -1,141 +1,44 @@
-"use client";
-import { useState } from "react";
-import Link from "next/link";
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
+
+    const navLinks = [
+        { name: 'Services', href: '/services' },
+        { name: 'Vehicles', href: '/vehicles' },
+        { name: 'About', href: '/about' },
+    ];
 
     return (
-        <nav className="sticky top-0 z-50 bg-[#1A1A1A]/95 backdrop-blur border-b border-[#E6E6E6]/10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-20">
-                    {/* Logo */}
-                    <Link
-                        href="/"
-                        className="text-2xl font-bold"
-                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
-                        LUX<span className="text-[#D4AF37]">AUTO</span>
+        <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/50 backdrop-blur-md">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+                <div className="flex items-center gap-8">
+                    <Link href="/" className="text-xl font-bold tracking-tighter text-white">
+                        CP-Auto
                     </Link>
-
-                    {/* Navigation Links - Desktop */}
-                    <div className="hidden md:flex space-x-8">
-                        <Link
-                            href="/"
-                            className="hover:text-[#D4AF37] transition-colors duration-300"
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            href="/about"
-                            className="hover:text-[#D4AF37] transition-colors duration-300"
-                        >
-                            About
-                        </Link>
-                        <Link
-                            href="/vehicles"
-                            className="hover:text-[#D4AF37] transition-colors duration-300"
-                        >
-                            Models
-                        </Link>
-                        <Link
-                            href="/services"
-                            className="hover:text-[#D4AF37] transition-colors duration-300"
-                        >
-                            Services
-                        </Link>
-                        <Link
-                            href="/contact"
-                            className="hover:text-[#D4AF37] transition-colors duration-300"
-                        >
-                            Contact
-                        </Link>
+                    <div className="hidden md:flex gap-6 text-sm font-medium">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className={`transition-colors ${pathname === link.href ? 'text-white' : 'text-slate-400 hover:text-white'}`}
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
                     </div>
-
-                    <a
-                        href="https://api.whatsapp.com/send?phone=+6281234567890"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hidden md:inline-flex items-center px-6 py-3 border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors duration-300"
-                    >
-                        Configure Yours
-                    </a>
-
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        className="md:hidden p-2"
-                        onClick={() => setIsOpen(!isOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-                            />
-                        </svg>
-                    </button>
+                </div>
+                <div className="flex items-center gap-4">
+                    <Link href="/contact" className="hidden md:block text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                        Contact Sales
+                    </Link>
+                    <Link href="/contact" className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black hover:bg-slate-200 transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]">
+                        Book Demo
+                    </Link>
                 </div>
             </div>
-
-            {/* Mobile Menu Dropdown */}
-            {isOpen && (
-                <div className="md:hidden bg-[#1A1A1A]/95 border-t border-[#E6E6E6]/10">
-                    <div className="flex flex-col space-y-4 py-4 px-6">
-                        <Link
-                            href="/"
-                            className="hover:text-[#D4AF37] transition-colors duration-300"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            href="/about"
-                            className="hover:text-[#D4AF37] transition-colors duration-300"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            About
-                        </Link>
-                        <Link
-                            href="/vehicles"
-                            className="hover:text-[#D4AF37] transition-colors duration-300"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Models
-                        </Link>
-                        <Link
-                            href="/services"
-                            className="hover:text-[#D4AF37] transition-colors duration-300"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Services
-                        </Link>
-                        <Link
-                            href="/contact"
-                            className="hover:text-[#D4AF37] transition-colors duration-300"
-                            onClick={() => setIsOpen(false)}
-                        >
-                            Contact
-                        </Link>
-                        <a
-                            href="https://api.whatsapp.com/send?phone=+6281234567890"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-6 py-3 border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors duration-300"
-                        >
-                            Configure Yours
-                        </a>
-
-                    </div>
-                </div>
-            )}
         </nav>
     );
 }

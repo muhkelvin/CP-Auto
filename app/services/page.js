@@ -1,98 +1,67 @@
-"use client"
-import { FaWrench, FaShieldAlt, FaHandHoldingUsd, FaExchangeAlt } from 'react-icons/fa'
+import Link from 'next/link';
 
 export default function Services() {
-    const services = [
-        {
-            icon: <FaHandHoldingUsd />,
-            title: "Financing Solutions",
-            desc: "Flexible payment plans with competitive rates"
-        },
-        {
-            icon: <FaWrench />,
-            title: "Maintenance",
-            desc: "Genuine parts & expert technicians"
-        },
-        {
-            icon: <FaShieldAlt />,
-            title: "Insurance",
-            desc: "Comprehensive coverage options"
-        },
-        {
-            icon: <FaExchangeAlt />,
-            title: "Trade-In",
-            desc: "Get best value for your current vehicle"
-        }
-    ]
-
     return (
-        <main>
-            {/* Hero Section */}
-            <section className="relative h-96 flex items-center justify-center">
-                <div
-                    className="absolute inset-0 bg-cover bg-center opacity-80"
-                    style={{
-                        backgroundImage: "url('service.jpg')"
-                    }}
-                >
-                    {/* Gradient overlay untuk mencairkan kesan gambar */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900 via-transparent to-blue-500 opacity-70" />
-                </div>
-                <div className="relative z-10 text-center text-white">
-                    <h1 className="text-6xl font-bold drop-shadow-lg">Premium Care</h1>
-                    <p className="text-xl mt-4 drop-shadow-lg">Beyond the Purchase</p>
-                </div>
-            </section>
+        <div className="mx-auto max-w-7xl px-6 py-16 space-y-32">
 
-            {/* Services Grid */}
-            <section className="py-20">
-                <div className="container mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {services.map((service, index) => (
-                        <div
-                            key={index}
-                            className="p-8 border border-gray-300 rounded-lg hover:border-yellow-500 transition-colors bg-white shadow-md"
-                        >
-                            <div className="text-yellow-500 text-4xl mb-4">{service.icon}</div>
-                            <h3 className="text-2xl font-bold mb-2 text-gray-800">{service.title}</h3>
-                            <p className="text-gray-600">{service.desc}</p>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Service Details */}
-            <section className="py-20 bg-gradient-to-r from-blue-900 to-blue-600">
-                <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-8 text-white">
-                        <h2 className="text-4xl font-bold">Complete Ownership Experience</h2>
-                        <div className="space-y-6">
-                            {[
-                                "24/7 Roadside Assistance",
-                                "Genuine Parts Warranty",
-                                "Mobile Service Unit",
-                                "Software Updates"
-                            ].map((item, index) => (
-                                <div key={index} className="flex items-center gap-4">
-                                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
-                                        <span className="text-blue-900 font-bold">✓</span>
-                                    </div>
-                                    <span className="text-lg">{item}</span>
-                                </div>
-                            ))}
-                        </div>
+            {/* HERO SECTION - SERVICES (Split Layout dengan Gambar) */}
+            <section className="flex flex-col lg:flex-row items-center gap-12 pt-12">
+                <div className="w-full lg:w-1/2 space-y-6">
+                    <div className="text-violet-400 font-mono text-sm tracking-widest uppercase">Platform Services</div>
+                    <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
+                        Powerful services to scale your fleet.
+                    </h1>
+                    <p className="text-lg text-slate-400">
+                        From preventative maintenance algorithms to real-time driver analytics, CP-Auto provides end-to-end tooling for modern automotive operations.
+                    </p>
+                    <div className="pt-4">
+                        <Link href="/contact" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-slate-200 transition-colors">
+                            Talk to an Expert
+                        </Link>
                     </div>
+                </div>
 
-                    <div className="relative h-96 rounded-lg overflow-hidden">
-                        <div
-                            className="absolute inset-0 bg-cover bg-center"
-                            style={{
-                                backgroundImage: "url('https://picsum.photos/seed/servicedetail/800/600')"
-                            }}
+                {/* HERO IMAGE SERVICES */}
+                <div className="w-full lg:w-1/2">
+                    <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                        <img
+                            src="/service.jpg"
+                            alt="Fleet Management Services"
+                            className="w-full h-[400px] object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-blue-900 via-transparent to-blue-600 opacity-80" />
+                        {/* Efek gradient tipis di bawah gambar */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     </div>
                 </div>
             </section>
-        </main>
-    )
+
+            {/* Core Services Bento Grid */}
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Service Card 1 */}
+                <div className="group rounded-3xl border border-white/10 bg-white/[0.02] p-8 md:p-10 hover:bg-white/[0.05] transition-all">
+                    <h3 className="text-2xl font-bold text-white mb-4">Predictive Maintenance</h3>
+                    <p className="text-slate-400 mb-6">
+                        Our AI analyzes vehicle telemetry in real-time to predict failures before they happen. Schedule repairs proactively.
+                    </p>
+                    <ul className="space-y-3 text-sm text-slate-300">
+                        <li className="flex items-center gap-2"><span className="text-violet-400">✓</span> Automated diagnostic checks</li>
+                        <li className="flex items-center gap-2"><span className="text-violet-400">✓</span> Dynamic wear-and-tear forecasting</li>
+                    </ul>
+                </div>
+
+                {/* Service Card 2 */}
+                <div className="group rounded-3xl border border-white/10 bg-white/[0.02] p-8 md:p-10 hover:bg-white/[0.05] transition-all">
+                    <h3 className="text-2xl font-bold text-white mb-4">Live Fleet Tracking</h3>
+                    <p className="text-slate-400 mb-6">
+                        Sub-second GPS tracking combined with route optimization. Monitor your entire fleet on a high-performance interactive map.
+                    </p>
+                    <ul className="space-y-3 text-sm text-slate-300">
+                        <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Real-time geolocation</li>
+                        <li className="flex items-center gap-2"><span className="text-blue-400">✓</span> Automated geofencing alerts</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    );
 }

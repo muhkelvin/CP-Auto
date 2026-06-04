@@ -1,112 +1,96 @@
-"use client"
-import { FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa'
-import { MdEmail } from 'react-icons/md'
-
 export default function Contact() {
     return (
-        <main>
-            <section className="relative h-96 flex items-center justify-center">
-                <div className="absolute inset-0 bg-[url('/contact-bg.jpg')] bg-cover bg-center opacity-40" />
-                <div className="relative z-10 text-center">
-                    <h1 className="text-6xl font-bold">Get in Touch</h1>
-                    <p className="text-xl mt-4">We're here to assist you</p>
+        <div className="relative min-h-screen flex items-center justify-center py-32 px-6 overflow-hidden bg-black">
+
+            {/* 1. BACKGROUND IMAGE & OVERLAYS - Pasti Tampil */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                {/* Gambar Background */}
+                <img
+                    src="/contact-bg.jpg"
+                    alt="Contact Background"
+                    className="w-full h-full object-cover opacity-30"
+                />
+
+                {/* Blur & Dark Overlay agar teks form mudah dibaca */}
+                <div className="absolute inset-0 bg-black/60 backdrop-blur-xl"></div>
+
+                {/* Subtle Violet Glow di tengah layar */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-500/10 rounded-full blur-[120px]"></div>
+            </div>
+
+            {/* 2. FLOATING CONTACT CARD (Glassmorphism) */}
+            <div className="relative z-10 w-full max-w-2xl bg-white/[0.03] border border-white/10 p-8 md:p-12 rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+
+                {/* Header */}
+                <div className="text-center mb-10">
+                    <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-white/10 border border-white/10 mb-6">
+                        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h1 className="text-3xl md:text-4xl font-bold tracking-tighter text-white mb-4">
+                        Get in touch.
+                    </h1>
+                    <p className="text-slate-400">
+                        Fill out the form below and our sales engineering team will get back to you within 24 hours.
+                    </p>
                 </div>
-            </section>
 
-            <section className="py-20">
-                <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12">
-                    {/* Contact Info */}
-                    <div className="space-y-8">
-                        <div className="flex items-start gap-6">
-                            <FaMapMarkerAlt className="text-[#D4AF37] text-2xl mt-1" />
-                            <div>
-                                <h3 className="text-xl font-bold mb-2">Headquarters</h3>
-                                <p>123 Luxury Avenue<br />Premium City, PC 12345</p>
-                            </div>
+                {/* Form */}
+                <form className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">First Name</label>
+                            <input
+                                type="text"
+                                className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                                placeholder="Jane"
+                            />
                         </div>
-
-                        <div className="flex items-start gap-6">
-                            <FaPhoneAlt className="text-[#D4AF37] text-2xl mt-1" />
-                            <div>
-                                <h3 className="text-xl font-bold mb-2">Phone</h3>
-                                <p>+1 (234) 567-8900<br />Mon-Fri: 8AM - 6PM</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start gap-6">
-                            <MdEmail className="text-[#D4AF37] text-2xl mt-1" />
-                            <div>
-                                <h3 className="text-xl font-bold mb-2">Email</h3>
-                                <p>contact@luxauto.com<br />Response within 24 hours</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start gap-6">
-                            <FaWhatsapp className="text-[#D4AF37] text-2xl mt-1" />
-                            <div>
-                                <h3 className="text-xl font-bold mb-2">WhatsApp</h3>
-                                <p>+1 (234) 567-8901<br />Instant messaging support</p>
-                            </div>
+                        <div className="space-y-2">
+                            <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Last Name</label>
+                            <input
+                                type="text"
+                                className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                                placeholder="Doe"
+                            />
                         </div>
                     </div>
 
-                    {/* Contact Form */}
-                    <div className="bg-[#2A2A2A] p-8 rounded-lg">
-                        <form className="space-y-6">
-                            <div>
-                                <label className="block mb-2">Full Name</label>
-                                <input
-                                    type="text"
-                                    className="w-full bg-transparent border border-[#E6E6E6]/30 px-4 py-3 rounded-sm focus:outline-[#D4AF37]"
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block mb-2">Email</label>
-                                <input
-                                    type="email"
-                                    className="w-full bg-transparent border border-[#E6E6E6]/30 px-4 py-3 rounded-sm focus:outline-[#D4AF37]"
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block mb-2">Message</label>
-                                <textarea
-                                    rows="5"
-                                    className="w-full bg-transparent border border-[#E6E6E6]/30 px-4 py-3 rounded-sm focus:outline-[#D4AF37]"
-                                />
-                            </div>
-
-                            <button className="w-full bg-[#D4AF37] text-[#1A1A1A] py-3 rounded-sm hover:bg-[#c5a235] transition-colors">
-                                Send Message
-                            </button>
-                        </form>
+                    <div className="space-y-2">
+                        <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Work Email</label>
+                        <input
+                            type="email"
+                            className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                            placeholder="jane@company.com"
+                        />
                     </div>
-                </div>
-            </section>
 
-            {/* FAQ Section */}
-            <section className="py-20 bg-[#1A1A1A]/95">
-                <div className="container mx-auto px-4 max-w-3xl">
-                    <h2 className="text-4xl font-bold text-center mb-12">FAQ</h2>
-
-                    <div className="space-y-4">
-                        {[
-                            { question: "What's the warranty period?", answer: "5 years or 100,000 km" },
-                            { question: "Do you offer test drives?", answer: "Yes, book online or visit dealership" },
-                            { question: "Payment methods accepted?", answer: "Cash, Credit, Financing Options" }
-                        ].map((item, index) => (
-                            <div key={index} className="border-b border-[#E6E6E6]/10 pb-4">
-                                <div className="flex justify-between items-center cursor-pointer py-2">
-                                    <h3 className="font-bold">{item.question}</h3>
-                                    <span className="text-[#D4AF37]">+</span>
-                                </div>
-                                <p className="text-[#E6E6E6]/80 pt-2">{item.answer}</p>
-                            </div>
-                        ))}
+                    <div className="space-y-2">
+                        <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">How can we help?</label>
+                        <textarea
+                            rows="4"
+                            className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all resize-none"
+                            placeholder="Tell us about your fleet operations and goals..."
+                        ></textarea>
                     </div>
-                </div>
-            </section>
-        </main>
-    )
+
+                    <div className="pt-4">
+                        <button
+                            type="button"
+                            className="w-full rounded-xl bg-white text-black font-bold py-4 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300"
+                        >
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+
+                {/* Footer info inside card */}
+                <p className="mt-8 text-center text-xs text-slate-500">
+                    By submitting this form, you agree to our <a href="#" className="text-slate-300 hover:text-white underline underline-offset-2">Privacy Policy</a>.
+                </p>
+
+            </div>
+        </div>
+    );
 }

@@ -1,26 +1,25 @@
-// app/layout.js
-import './globals.css'
-import Navbar from "@/app/components/Navbar";
-import Footer from "@/app/components/Footer";
+import './globals.css';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 export const metadata = {
-    title: 'Luxury Auto',
-    description: 'Premium Automotive Experience',
-}
+    title: 'CP-Auto | Premium Fleet Management',
+    description: 'The operating system for modern vehicle fleets.',
+};
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
-        <head>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-            <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&family=Avenir+Next:wght@600&display=swap" rel="stylesheet" />
-        </head>
-        <body className="bg-[#1A1A1A] text-[#E6E6E6]">
-        <Navbar />
-        {children}
-        <Footer />
-        </body>
+        <html lang="en" className="scroll-smooth">
+            <body className="bg-black text-slate-50 selection:bg-violet-500/30 antialiased min-h-screen flex flex-col">
+                {/* Global Background Glow */}
+                <div className="fixed top-0 z-[-1] h-screen w-full bg-black bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))]"></div>
+
+                <Navbar />
+                <main className="flex-grow pt-20">
+                    {children}
+                </main>
+                <Footer />
+            </body>
         </html>
-    )
+    );
 }
